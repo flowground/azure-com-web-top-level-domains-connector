@@ -1,0 +1,100 @@
+{
+    "title": "TopLevelDomains API Client",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/web-TopLevelDomains/2018-02-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "TopLevelDomains_List": {
+            "main": "./lib/actions/TopLevelDomains_List.js",
+            "title": "Get all top-level domains supported for registration.",
+            "description": "Get all top-level domains supported for registration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TopLevelDomains_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TopLevelDomains_Get": {
+            "main": "./lib/actions/TopLevelDomains_Get.js",
+            "title": "Get details of a top-level domain.",
+            "description": "Get details of a top-level domain.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TopLevelDomains_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TopLevelDomains_ListAgreements": {
+            "main": "./lib/actions/TopLevelDomains_ListAgreements.js",
+            "title": "Gets all legal agreements that user needs to accept before purchasing a domain.",
+            "description": "Gets all legal agreements that user needs to accept before purchasing a domain.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TopLevelDomains_ListAgreements.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

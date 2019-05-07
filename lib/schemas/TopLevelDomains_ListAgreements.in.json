@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Options for retrieving the list of top level domain legal agreements.",
+            "properties": {
+                "forTransfer": {
+                    "description": "If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>.",
+                    "type": "boolean"
+                },
+                "includePrivacy": {
+                    "description": "If <code>true</code>, then the list of agreements will include agreements for domain privacy as well; otherwise, <code>false</code>.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
